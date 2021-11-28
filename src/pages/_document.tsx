@@ -1,45 +1,45 @@
 import Document, {
   DocumentContext,
-  Html,
   Head,
+  Html,
   Main,
   NextScript,
-} from "next/document";
+} from 'next/document'
 interface CustomDocumentInterface {
-  url: string;
-  title: string;
-  description: string;
+  url: string
+  title: string
+  description: string
 }
 
 const generateJsonLd = () => {
   const jsonLd = {
-    "@context": "http://schema.org",
-    "@type": "NewsArticle",
-    headline: "template",
-    datePublished: "2021-11-01T23:00:00+09:00",
-    dateModified: "2021-11-01T23:00:00+09:00",
-    image: [""],
-  };
-  return JSON.stringify(jsonLd);
-};
+    '@context': 'http://schema.org',
+    '@type': 'NewsArticle',
+    headline: 'template',
+    datePublished: '2021-12-01T23:00:00+09:00',
+    dateModified: '2021-12-01T23:00:00+09:00',
+    image: [''],
+  }
+  return JSON.stringify(jsonLd)
+}
 
 class MyDocument extends Document implements CustomDocumentInterface {
   static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx);
+    const initialProps = await Document.getInitialProps(ctx)
 
-    return initialProps;
+    return initialProps
   }
 
-  url = "";
-  title = "template";
-  description = "templateです";
+  url = ''
+  title = 'タイトル'
+  description = '説明'
 
   render() {
-    const jsonLd = generateJsonLd();
+    const jsonLd = generateJsonLd()
     return (
       <Html lang="ja-JP">
         <Head>
-          <meta charSet="utf-8"></meta>
+          <meta charSet="utf-8" />
           <meta name="description" content={this.description} />
           <link rel="icon" href="/images/favicon.ico" />
           <meta property="og:description" content={this.description} />
@@ -74,8 +74,8 @@ class MyDocument extends Document implements CustomDocumentInterface {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
-export default MyDocument;
+export default MyDocument
