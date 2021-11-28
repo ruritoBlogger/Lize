@@ -1,8 +1,8 @@
 {
-  "name": "template",
+  "name": "Lize",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:ruritoBlogger/nextjs_template.git",
+  "repository": "git@github.com:ruritoBlogger/Lize.git",
   "author": "rurito0125 <rurito.blog@gmail.com>",
   "license": "MIT",
   "private": false,
