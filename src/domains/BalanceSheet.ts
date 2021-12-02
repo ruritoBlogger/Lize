@@ -1,18 +1,19 @@
 import * as t from 'io-ts'
 
 export const BalanceSheetCodec = t.type({
-  financialID: t.number,
-  totalAssets: t.number,
-  netAssets: t.number,
-  capitalStock: t.number,
-  profitSurplus: t.number,
-  cashEquivalent: t.number,
-  netCash: t.number,
-  depreciation: t.number,
-  capitalInvestment: t.number,
-  liabilities: t.number,
-  createdAt: t.number,
-  updatedAt: t.number,
+  IDfinancial: t.number,
+  id: t.number,
+  TotalAssets: t.number,
+  NetAssets: t.number,
+  CapitalStock: t.number,
+  ProfitSurplus: t.number,
+  CashEquivalent: t.number,
+  NetCash: t.number,
+  Depreciation: t.number,
+  CapitalInvestment: t.number,
+  Liabilities: t.number,
+  CreatedAt: t.number,
+  UpdatedAt: t.number,
 })
 
 export type BalanceSheet = t.TypeOf<typeof BalanceSheetCodec>

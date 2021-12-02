@@ -1,11 +1,12 @@
 import * as t from 'io-ts'
 
-export const CampanyCodec = t.type({
+export const CompanyCodec = t.type({
   name: t.string,
-  identificationCode: t.number,
-  industry: t.number,
-  createdAt: t.number,
-  updatedAt: t.number,
+  id: t.number,
+  IDIndustry: t.number,
+  IdentificationCode: t.number,
+  CreatedAt: t.number,
+  UpdatedAt: t.number,
 })
 
-export type Campany = t.TypeOf<typeof CampanyCodec>
+export type Company = t.TypeOf<typeof CompanyCodec>

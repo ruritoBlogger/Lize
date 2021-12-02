@@ -1,9 +1,10 @@
 import * as t from 'io-ts'
 
 export const IndustryAveIndexCodec = t.type({
-  financialID: t.number,
-  announcementDate: t.number,
-  capitalAdequacyRatio: t.number,
+  IDIndustry: t.number,
+  id: t.number,
+  AnnouncementDate: t.number,
+  CapitalAdequacyRatio: t.number,
   ROE: t.number,
   ROA: t.number,
   PER: t.number,
@@ -14,6 +15,8 @@ export const IndustryAveIndexCodec = t.type({
   EBITDA: t.number,
   EV: t.number,
   EVdivEBITDA: t.number,
+  CreatedAt: t.number,
+  UpdatedAt: t.number,
 })
 
 export type IndustryAveIndex = t.TypeOf<typeof IndustryAveIndexCodec>

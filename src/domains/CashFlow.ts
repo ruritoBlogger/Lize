@@ -1,13 +1,14 @@
 import * as t from 'io-ts'
 
 export const CashFlowCodec = t.type({
-  financialID: t.number,
-  salesCF: t.number,
-  investmentCF: t.number,
-  financialCF: t.number,
-  cashEquivalent: t.number,
-  createdAt: t.number,
-  updatedAt: t.number,
+  IDfinancial: t.number,
+  id: t.number,
+  SalesCF: t.number,
+  InvestmentCF: t.number,
+  FinancialCF: t.number,
+  CashEquivalent: t.number,
+  CreatedAt: t.number,
+  UpdatedAt: t.number,
 })
 
 export type CashFlow = t.TypeOf<typeof CashFlowCodec>

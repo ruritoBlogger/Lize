@@ -1,15 +1,18 @@
-export type { BalanceSheet, BalanceSheetCodec } from './BalanceSheet'
-export type { CashFlow, CashFlowCodec } from './CashFlow'
-export type { Campany, CampanyCodec } from './Company'
-export type {
-  FinancialStatement,
-  FinancialStatementCodec,
-} from './FinancialStatement'
-export type { IncomeStatement, IncomeStatementCodec } from './IncomeStatement'
-export type { Index, IndexCodec } from './Indextype'
-export type { Industry, IndustryCodec } from './Industry'
-export type {
-  IndustryAveIndex,
-  IndustryAveIndexCodec,
-} from './IndustryAveIndex'
-export type { StockPrice, StockPriceCodec } from './StockPrices'
+export type { BalanceSheet } from './BalanceSheet'
+export { BalanceSheetCodec } from './BalanceSheet'
+export type { CashFlow } from './CashFlow'
+export { CashFlowCodec } from './CashFlow'
+export type { Company } from './Company'
+export { CompanyCodec } from './Company'
+export type { FinancialStatement } from './FinancialStatement'
+export { FinancialStatementCodec } from './FinancialStatement'
+export type { IncomeStatement } from './IncomeStatement'
+export { IncomeStatementCodec } from './IncomeStatement'
+export type { Index } from './Indextype'
+export { IndexCodec } from './Indextype'
+export type { Industry } from './Industry'
+export { IndustryCodec } from './Industry'
+export type { IndustryAveIndex } from './IndustryAveIndex'
+export { IndustryAveIndexCodec } from './IndustryAveIndex'
+export type { StockPrice } from './StockPrices'
+export { StockPriceCodec } from './StockPrices'
