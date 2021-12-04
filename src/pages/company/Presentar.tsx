@@ -3,10 +3,11 @@ import React from 'react'
 import styles from './Presentar.module.sass'
 import { PresentarProps } from './type'
 
-export const Company: React.FC<PresentarProps> = ({ companies }) => {
+export const Company: React.FC<PresentarProps> = ({ companies, error }) => {
   return (
     <div className={styles.className}>
       <h3 className={styles.title}>企業一覧</h3>
+      <p className={styles.error}>{error}</p>
       <div className={styles.table}>
         <div className={styles.row}>
           <p className={styles.rootContent}>企業名</p>
