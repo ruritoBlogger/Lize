@@ -34,7 +34,12 @@ export function runGetHttpRequest<T>(
 ): TE.TaskEither<Error, T> {
   return pipe(
     TE.tryCatch(
-      () => axios.get(url),
+      () =>
+        axios.get(url, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }),
       (reason) => new Error(`${reason}`),
     ),
     TE.map((response) => response.data),
