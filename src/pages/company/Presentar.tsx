@@ -16,19 +16,11 @@ export const Company: React.FC<PresentarProps> = ({ companies, error }) => {
           <p className={styles.rootContent}>株価</p>
         </div>
         {companies.map((company) => (
-          <div key={company.id} className={styles.row}>
-            <p key={company.id} className={styles.content}>
-              {company.name}
-            </p>
-            <p key={company.id} className={styles.content}>
-              {company.IDIndustry}
-            </p>
-            <p key={company.id} className={styles.content}>
-              {company.IdentificationCode}
-            </p>
-            <p key={company.id} className={styles.content}>
-              ---
-            </p>
+          <div key={company.identificationCode} className={styles.row}>
+            <p className={styles.content}>{company.name}</p>
+            <p className={styles.content}>{company.industryID}</p>
+            <p className={styles.content}>{company.identificationCode}</p>
+            <p className={styles.content}>---</p>
           </div>
         ))}
       </div>
