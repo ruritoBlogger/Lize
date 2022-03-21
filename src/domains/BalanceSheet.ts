@@ -1,4 +1,5 @@
 import * as t from 'io-ts'
+import * as tt from 'io-ts-types'
 
 export const BalanceSheetCodec = t.type({
   financialID: t.number,
@@ -9,8 +10,8 @@ export const BalanceSheetCodec = t.type({
   profitSurplus: t.number,
   cashEquivalent: t.number,
   printedNum: t.number,
-  createdAt: t.string,
-  updatedAt: t.string,
+  createdAt: tt.date,
+  updatedAt: tt.date,
 })
 
 export type BalanceSheet = t.TypeOf<typeof BalanceSheetCodec>

@@ -1,4 +1,5 @@
 import * as t from 'io-ts'
+import * as tt from 'io-ts-types'
 
 export const IndustryAveIndexCodec = t.type({
   IDIndustry: t.number,
@@ -10,9 +11,8 @@ export const IndustryAveIndexCodec = t.type({
   per: t.number,
   pbr: t.number,
   eps: t.number,
-  pcfr: t.number,
-  createdAt: t.number,
-  updatedAt: t.number,
+  createdAt: tt.date,
+  updatedAt: tt.date,
 })
 
 export type IndustryAveIndex = t.TypeOf<typeof IndustryAveIndexCodec>

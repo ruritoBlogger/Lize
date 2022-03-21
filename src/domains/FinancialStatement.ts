@@ -1,12 +1,13 @@
 import * as t from 'io-ts'
+import * as tt from 'io-ts-types'
 
 export const FinancialStatementCodec = t.type({
   companyID: t.number,
   id: t.number,
-  announcementDate: t.string,
+  announcementDate: tt.date,
   isFiscal: t.boolean,
-  createdAt: t.string,
-  updatedAt: t.string,
+  createdAt: tt.date,
+  updatedAt: tt.date,
 })
 
 export type FinancialStatement = t.TypeOf<typeof FinancialStatementCodec>
