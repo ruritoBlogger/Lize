@@ -1,4 +1,5 @@
 import * as t from 'io-ts'
+import * as tt from 'io-ts-types'
 
 export const IndexCodec = t.type({
   financialID: t.number,
@@ -8,8 +9,8 @@ export const IndexCodec = t.type({
   per: t.number,
   pbr: t.number,
   eps: t.number,
-  createdAt: t.number,
-  updatedAt: t.number,
+  createdAt: tt.date,
+  updatedAt: tt.date,
 })
 
 export type Index = t.TypeOf<typeof IndexCodec>

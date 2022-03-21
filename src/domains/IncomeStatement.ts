@@ -1,4 +1,5 @@
 import * as t from 'io-ts'
+import * as tt from 'io-ts-types'
 
 export const IncomeStatementCodec = t.type({
   financialID: t.number,
@@ -7,8 +8,8 @@ export const IncomeStatementCodec = t.type({
   operatingIncome: t.number,
   ordinaryIncome: t.number,
   netIncome: t.number,
-  createdAt: t.number,
-  updatedAt: t.number,
+  createdAt: tt.date,
+  updatedAt: tt.date,
 })
 
 export type IncomeStatement = t.TypeOf<typeof IncomeStatementCodec>
