@@ -14,16 +14,16 @@ export const Container: React.FC = () => {
 
   useEffect(() => {
     const getCompaniesData = async () => {
-      pipe(
+      await pipe(
         runGetHttpRequest(
           t.array(CompanyCodec),
-          'http://127.0.0.1:8080/company',
+          'http://localhost:3000/company',
         ),
         TE.fold(
           (error) => T.of(setError(error.message)),
           (data) => T.of(setCompaniesData(data)),
         ),
-      )
+      )()
     }
     getCompaniesData()
   }, [])
