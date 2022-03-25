@@ -8,9 +8,9 @@ export const StockPriceCodec = t.type({
   closingPrice: t.number,
   highPrice: t.number,
   lowPrice: t.number,
-  date: tt.date,
-  createdAt: tt.date,
-  updatedAt: tt.date,
+  date: tt.DateFromISOString,
+  createdAt: tt.DateFromISOString,
+  updatedAt: tt.DateFromISOString,
 })
 
 export type StockPrice = t.TypeOf<typeof StockPriceCodec>

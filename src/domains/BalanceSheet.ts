@@ -10,8 +10,8 @@ export const BalanceSheetCodec = t.type({
   profitSurplus: t.number,
   cashEquivalent: t.number,
   printedNum: t.number,
-  createdAt: tt.date,
-  updatedAt: tt.date,
+  createdAt: tt.DateFromISOString,
+  updatedAt: tt.DateFromISOString,
 })
 
 export type BalanceSheet = t.TypeOf<typeof BalanceSheetCodec>

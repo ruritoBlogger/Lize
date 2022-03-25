@@ -6,8 +6,8 @@ export const CompanyCodec = t.type({
   id: t.number,
   industryID: t.number,
   identificationCode: t.number,
-  createdAt: tt.date,
-  updatedAt: tt.date,
+  createdAt: tt.DateFromISOString,
+  updatedAt: tt.DateFromISOString,
 })
 
 export type Company = t.TypeOf<typeof CompanyCodec>
