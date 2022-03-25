@@ -18,7 +18,7 @@ export const Company: React.FC<PresentarProps> = ({ companies, error }) => {
         {companies.map((company) => (
           <div key={company.identificationCode} className={styles.row}>
             <p className={styles.content}>{company.name}</p>
-            <p className={styles.content}>{company.industryID}</p>
+            <p className={styles.content}>{company.industryName}</p>
             <p className={styles.content}>{company.identificationCode}</p>
             <p className={styles.content}>---</p>
           </div>

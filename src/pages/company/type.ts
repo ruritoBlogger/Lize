@@ -1,6 +1,8 @@
-import { Company } from '../../domains'
-
 export type PresentarProps = {
-  companies: Company[]
+  companies: {
+    name: string
+    industryName: string
+    identificationCode: number
+  }[]
   error: string
 }
