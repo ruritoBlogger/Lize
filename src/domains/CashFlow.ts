@@ -7,8 +7,8 @@ export const CashFlowCodec = t.type({
   salesCF: t.number,
   investmentCF: t.number,
   financialCF: t.number,
-  createdAt: tt.date,
-  updatedAt: tt.date,
+  createdAt: tt.DateFromISOString,
+  updatedAt: tt.DateFromISOString,
 })
 
 export type CashFlow = t.TypeOf<typeof CashFlowCodec>

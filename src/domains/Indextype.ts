@@ -9,8 +9,8 @@ export const IndexCodec = t.type({
   per: t.number,
   pbr: t.number,
   eps: t.number,
-  createdAt: tt.date,
-  updatedAt: tt.date,
+  createdAt: tt.DateFromISOString,
+  updatedAt: tt.DateFromISOString,
 })
 
 export type Index = t.TypeOf<typeof IndexCodec>

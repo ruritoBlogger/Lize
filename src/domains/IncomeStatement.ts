@@ -8,8 +8,8 @@ export const IncomeStatementCodec = t.type({
   operatingIncome: t.number,
   ordinaryIncome: t.number,
   netIncome: t.number,
-  createdAt: tt.date,
-  updatedAt: tt.date,
+  createdAt: tt.DateFromISOString,
+  updatedAt: tt.DateFromISOString,
 })
 
 export type IncomeStatement = t.TypeOf<typeof IncomeStatementCodec>
