@@ -1,5 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit'
 
-export const rootReducer = combineReducers({})
+import { industrySlice } from './industry'
+
+export const rootReducer = combineReducers({
+  industry: industrySlice.reducer,
+})
 
 export type RootState = ReturnType<typeof rootReducer>
