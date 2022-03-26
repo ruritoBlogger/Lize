@@ -1,23 +1,13 @@
 import * as A from 'fp-ts/Array'
 import { pipe } from 'fp-ts/lib/function'
 import * as O from 'fp-ts/Option'
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 
 import { Industry } from '../../domains'
-import { fetchCompanyList } from '../../features/company'
-import { fetchIndustryList } from '../../features/industry'
 import { Company as View } from './Presentar'
 
 export const Container: React.FC = () => {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    // TODO: ここで呼び出さない
-    dispatch(fetchIndustryList())
-    dispatch(fetchCompanyList())
-  }, [])
-
   const industries = useSelector((state) => state.industry.industries)
   const companies = useSelector((state) => state.company.companies)
   const industryError = useSelector((state) => state.industry.error)
