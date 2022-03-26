@@ -8,6 +8,7 @@ import { Root as View } from './Presentar'
 export const Container: React.FC = () => {
   const dispatch = useDispatch()
 
+  // TODO: /に再度アクセスされてもAPIを叩きたくない
   useEffect(() => {
     dispatch(fetchIndustryList())
     dispatch(fetchCompanyList())
