@@ -1,3 +1,4 @@
+import * as Eq from 'fp-ts/Eq'
 import * as t from 'io-ts'
 import * as tt from 'io-ts-types'
 
@@ -15,3 +16,7 @@ export const BalanceSheetCodec = t.type({
 })
 
 export type BalanceSheet = t.TypeOf<typeof BalanceSheetCodec>
+
+export const EqBalanceSheet: Eq.Eq<BalanceSheet> = {
+  equals: (p1, p2) => p1.financialID === p2.financialID && p1.id === p2.id,
+}
