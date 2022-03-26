@@ -2,6 +2,7 @@ import { combineReducers } from '@reduxjs/toolkit'
 
 import { companySlice } from './company'
 import { financialStatementSlice } from './financialStatement'
+import { incomeStatementSlice } from './incomeStatement'
 import { industrySlice } from './industry'
 import { stockPriceSlice } from './stockPrice'
 
@@ -10,6 +11,7 @@ export const rootReducer = combineReducers({
   company: companySlice.reducer,
   stockPrice: stockPriceSlice.reducer,
   financialStatement: financialStatementSlice.reducer,
+  incomeStatement: incomeStatementSlice.reducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>
