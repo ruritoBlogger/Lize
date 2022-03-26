@@ -1,52 +1,32 @@
 import * as A from 'fp-ts/Array'
 import { pipe } from 'fp-ts/lib/function'
 import * as O from 'fp-ts/Option'
-import * as T from 'fp-ts/Task'
-import * as TE from 'fp-ts/TaskEither'
-import * as t from 'io-ts'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Company, CompanyCodec, Industry } from '../../domains'
+import { Industry } from '../../domains'
+import { fetchCompanyList } from '../../features/company'
 import { fetchIndustryList } from '../../features/industry'
-import { runGetHttpRequest } from '../../functions'
 import { Company as View } from './Presentar'
 
 export const Container: React.FC = () => {
-  const [companiesData, setCompaniesData] = useState<Company[]>([])
-  const [error, setError] = useState<string>('')
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const getCompaniesData = async () => {
-      await pipe(
-        runGetHttpRequest(
-          // NOTE: io-ts-typesを使ったcodecを流そうとすると弾かれるんよな
-          // eslint-disable-next-line
-          // @ts-ignore
-          t.array(CompanyCodec),
-          'http://localhost:3000/company',
-        ),
-        TE.fold(
-          (error) => T.of(setError(error.message)),
-          (data) => T.of(setCompaniesData(data)),
-        ),
-      )()
-    }
-    getCompaniesData()
-
     // TODO: ここで呼び出さない
     dispatch(fetchIndustryList())
+    dispatch(fetchCompanyList())
   }, [])
 
-  // FIXME: 型周りを何とかする
-  // eslint-disable-next-line
-  // @ts-ignore
   const industries = useSelector((state) => state.industry.industries)
+  const companies = useSelector((state) => state.company.companies)
+  const industryError = useSelector((state) => state.industry.error)
+  const companyError = useSelector((state) => state.company.error)
+
   return (
     <View
       companies={pipe(
-        companiesData,
+        companies,
         A.map((company) => ({
           name: company.name,
           identificationCode: company.identificationCode,
@@ -59,7 +39,23 @@ export const Container: React.FC = () => {
           ),
         })),
       )}
-      error={error}
+      // FIXME: 終わってる
+      error={pipe(
+        O.Do,
+        O.bind('industryError', () => industryError),
+        O.bind('industryMessage', ({ industryError }) =>
+          O.fromNullable(industryError.message),
+        ),
+        O.bind('companyError', () => companyError),
+        O.bind('companyMessage', ({ companyError }) =>
+          O.fromNullable(companyError.message),
+        ),
+        O.map(
+          ({ companyMessage, industryMessage }) =>
+            industryMessage + '\n' + companyMessage,
+        ),
+        O.getOrElse(() => ''),
+      )}
     />
   )
 }
