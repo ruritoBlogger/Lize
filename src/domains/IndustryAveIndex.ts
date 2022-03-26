@@ -1,8 +1,9 @@
+import * as Eq from 'fp-ts/Eq'
 import * as t from 'io-ts'
 import * as tt from 'io-ts-types'
 
 export const IndustryAveIndexCodec = t.type({
-  IDIndustry: t.number,
+  industryID: t.number,
   id: t.number,
   announcementDate: tt.DateFromISOString,
   capitalAdequacyRatio: t.number,
@@ -16,3 +17,10 @@ export const IndustryAveIndexCodec = t.type({
 })
 
 export type IndustryAveIndex = t.TypeOf<typeof IndustryAveIndexCodec>
+
+export const EqIndustryAveIndex: Eq.Eq<IndustryAveIndex> = {
+  equals: (p1, p2) =>
+    p1.industryID === p2.industryID &&
+    p1.id === p2.id &&
+    p1.announcementDate === p2.announcementDate,
+}
