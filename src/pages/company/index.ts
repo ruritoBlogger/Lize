@@ -1,2 +1,2 @@
-import { Container as Company } from './Container'
+import { ReduxWrapper as Company } from './Redux'
 export default Company
