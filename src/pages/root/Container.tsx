@@ -1,44 +1,36 @@
 import { pipe } from 'fp-ts/function'
 import * as O from 'fp-ts/Option'
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
 
-import { fetchCompanyList } from '../../features/company'
-import { fetchIndustryList } from '../../features/industry'
 import { Root as View } from './Presentar'
+import { ContainerProps } from './type'
 
-export const Container: React.FC = () => {
-  const industryResponse = useSelector((state) => state.ange.industryRequest)
-  const companyResponse = useSelector((state) => state.ange.companyRequest)
-  const financialResponse = useSelector(
-    (state) => state.ange.financialStatementRequest,
-  )
-
-  const dispatch = useDispatch()
-
-  // TODO: /に再度アクセスされてもAPIを叩きたくない
-  useEffect(() => {
-    dispatch(fetchIndustryList())
-    dispatch(fetchCompanyList())
-  }, [])
-
+export const Container: React.FC<ContainerProps> = ({
+  industryError,
+  industryIsLoading,
+  companyError,
+  companyIsLoading,
+  financialError,
+  financialIsLoading,
+}) => {
   return (
     <View
-      industryIsLoading={industryResponse.isLoading}
-      companyIsLoading={companyResponse.isLoading}
-      financialIsLoading={financialResponse.isLoading}
+      industryIsLoading={industryIsLoading}
+      companyIsLoading={companyIsLoading}
+      financialIsLoading={financialIsLoading}
       // FIXME: 終わってる
+      // FIXME: bindする値と引数で名前の衝突が起こるの何とかしたいな
       error={pipe(
         O.Do,
-        O.bind('industryError', () => industryResponse.error),
+        O.bind('industryError', () => industryError),
         O.bind('industryMessage', ({ industryError }) =>
           O.fromNullable(industryError.message),
         ),
-        O.bind('companyError', () => companyResponse.error),
+        O.bind('companyError', () => companyError),
         O.bind('companyMessage', ({ companyError }) =>
           O.fromNullable(companyError.message),
         ),
-        O.bind('financialError', () => financialResponse.error),
+        O.bind('financialError', () => financialError),
         O.bind('financialMessage', ({ financialError }) =>
           O.fromNullable(financialError.message),
         ),

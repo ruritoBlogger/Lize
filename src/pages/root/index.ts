@@ -1,2 +1,2 @@
-import { Container as Root } from './Container'
+import { ReduxWrapper as Root } from './Redux'
 export default Root
