@@ -1,2 +1,6 @@
-// eslint-disable-next-line
-export type PresentarProps = {}
+export type PresentarProps = {
+  industryIsLoading: boolean
+  companyIsLoading: boolean
+  financialIsLoading: boolean
+  error: string
+}
