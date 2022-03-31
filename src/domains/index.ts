@@ -1,3 +1,5 @@
+export type { AngeResponse } from './Ange'
+export { AngeResponseCodec } from './Ange'
 export type { BalanceSheet } from './BalanceSheet'
 export { BalanceSheetCodec, EqBalanceSheet } from './BalanceSheet'
 export type { CashFlow } from './CashFlow'
