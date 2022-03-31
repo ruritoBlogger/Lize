@@ -5,19 +5,44 @@ import React from 'react'
 import { Root as View } from './Presentar'
 import { ContainerProps } from './type'
 
+// TODO: React.useMemoで引数をキャッシュ出来るらしいが
 export const Container: React.FC<ContainerProps> = ({
   industryError,
   industryIsLoading,
+  industryRequestDidSend,
   companyError,
+  companyRequestDidSend,
   companyIsLoading,
   financialError,
+  financialRequestDidSend,
   financialIsLoading,
 }) => {
+  const industryButtonOnClick = (
+    _: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    industryRequestDidSend()
+  }
+
+  const companyButtonOnClick = (
+    _: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    companyRequestDidSend()
+  }
+
+  const financialButtonOnClick = (
+    _: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    financialRequestDidSend()
+  }
+
   return (
     <View
       industryIsLoading={industryIsLoading}
+      industryButtonOnClick={industryButtonOnClick}
       companyIsLoading={companyIsLoading}
+      companyButtonOnClick={companyButtonOnClick}
       financialIsLoading={financialIsLoading}
+      financialButtonOnClick={financialButtonOnClick}
       // FIXME: 終わってる
       // FIXME: bindする値と引数で名前の衝突が起こるの何とかしたいな
       error={pipe(
