@@ -9,6 +9,9 @@ import { EqStockPrice, StockPrice, StockPriceCodec } from '../../domains'
 import { runGetHttpRequest } from '../../functions/HttpRequest'
 import type { State } from './State'
 
+const TOKO_URL = process.env.NEXT_PUBLIC_TOKO_URL
+const TOKO_PORT = process.env.NEXT_PUBLIC_TOKO_PORT
+
 export const fetchStockPriceList = createAsyncThunk<StockPrice[], number>(
   'stockPrice/getList',
   async (companyID) =>
@@ -17,7 +20,7 @@ export const fetchStockPriceList = createAsyncThunk<StockPrice[], number>(
       // eslint-disable-next-line
       // @ts-ignore
       t.array(StockPriceCodec),
-      `http://localhost:3000/company/${companyID}/stock`,
+      `${TOKO_URL}:${TOKO_PORT}/company/${companyID}/stock`,
     )().then((value) =>
       // NOTE: fp-ts/TaskEither -> Promise
       // createAsyncThunk内部でresolve, rejectしないと効力があまりない

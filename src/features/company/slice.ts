@@ -9,6 +9,9 @@ import { Company, CompanyCodec, EqCompany } from '../../domains'
 import { runGetHttpRequest } from '../../functions/HttpRequest'
 import type { State } from './State'
 
+const TOKO_URL = process.env.NEXT_PUBLIC_TOKO_URL
+const TOKO_PORT = process.env.NEXT_PUBLIC_TOKO_PORT
+
 export const fetchCompanyList = createAsyncThunk<Company[]>(
   'company/getList',
   async () =>
@@ -17,8 +20,7 @@ export const fetchCompanyList = createAsyncThunk<Company[]>(
       // eslint-disable-next-line
       // @ts-ignore
       t.array(CompanyCodec),
-      // TODO: APIのurlは環境変数に吐き出しておく
-      'http://localhost:3000/company',
+      `${TOKO_URL}:${TOKO_PORT}/company`,
     )().then((value) =>
       // NOTE: fp-ts/TaskEither -> Promise
       // createAsyncThunk内部でresolve, rejectしないと効力があまりない
