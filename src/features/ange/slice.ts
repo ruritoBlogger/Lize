@@ -7,12 +7,15 @@ import { AngeResponseCodec } from '../../domains'
 import { runGetHttpRequest } from '../../functions/HttpRequest'
 import type { State } from './State'
 
+const ANGE_URL = process.env.NEXT_PUBLIC_ANGE_URL
+const ANGE_PORT = process.env.NEXT_PUBLIC_ANGE_PORT
+
 export const runGenerateIndustry = createAsyncThunk<{ message: string }>(
   'ange/industry',
   async () =>
     await runGetHttpRequest(
       AngeResponseCodec,
-      'http://localhost:5000/industry',
+      `${ANGE_URL}:${ANGE_PORT}/industry`,
     )().then((value) =>
       // NOTE: fp-ts/TaskEither -> Promise
       // createAsyncThunk内部でresolve, rejectしないと効力があまりない
@@ -29,7 +32,7 @@ export const runGenerateCompany = createAsyncThunk<{ message: string }>(
   async () =>
     await runGetHttpRequest(
       AngeResponseCodec,
-      'http://localhost:5000/company',
+      `${ANGE_URL}:${ANGE_PORT}/company`,
     )().then((value) =>
       // NOTE: fp-ts/TaskEither -> Promise
       // createAsyncThunk内部でresolve, rejectしないと効力があまりない
@@ -48,7 +51,7 @@ export const runGenerateFinancialStatement = createAsyncThunk<{
   async () =>
     await runGetHttpRequest(
       AngeResponseCodec,
-      'http://localhost:5000/finantial_statements',
+      `${ANGE_URL}:${ANGE_PORT}/finantial_statements`,
     )().then((value) =>
       // NOTE: fp-ts/TaskEither -> Promise
       // createAsyncThunk内部でresolve, rejectしないと効力があまりない

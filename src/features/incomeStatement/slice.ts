@@ -13,6 +13,9 @@ import {
 import { runGetHttpRequest } from '../../functions/HttpRequest'
 import type { State } from './State'
 
+const TOKO_URL = process.env.NEXT_PUBLIC_TOKO_URL
+const TOKO_PORT = process.env.NEXT_PUBLIC_TOKO_PORT
+
 export const fetchIncomeStatementList = createAsyncThunk<
   IncomeStatement[],
   { companyID: number; financialID: number }
@@ -24,7 +27,7 @@ export const fetchIncomeStatementList = createAsyncThunk<
       // eslint-disable-next-line
       // @ts-ignore
       t.array(IncomeStatementCodec),
-      `http://localhost:3000/company/${companyID}/finantial/${financialID}/income`,
+      `${TOKO_URL}:${TOKO_PORT}/company/${companyID}/finantial/${financialID}/income`,
     )().then((value) =>
       // NOTE: fp-ts/TaskEither -> Promise
       // createAsyncThunk内部でresolve, rejectしないと効力があまりない
