@@ -2,19 +2,19 @@ import * as A from 'fp-ts/Array'
 import { pipe } from 'fp-ts/lib/function'
 import * as O from 'fp-ts/Option'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 import { Industry } from '../../domains'
-import { Company as View } from './Presentar'
-import { ContainerProps } from './type'
+import Presentar from './Presentar'
 
-export const Container: React.FC<ContainerProps> = ({
-  industries,
-  industryError,
-  companies,
-  companyError,
-}) => {
+const Container: React.FC = () => {
+  const industries = useSelector((state) => state.industry.industries)
+  const companies = useSelector((state) => state.company.companies)
+  const industryError = useSelector((state) => state.industry.error)
+  const companyError = useSelector((state) => state.company.error)
+
   return (
-    <View
+    <Presentar
       companies={pipe(
         companies,
         A.map((company) => ({
@@ -49,3 +49,5 @@ export const Container: React.FC<ContainerProps> = ({
     />
   )
 }
+
+export default Container

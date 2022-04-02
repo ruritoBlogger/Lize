@@ -4,7 +4,7 @@ import React from 'react'
 import styles from './Presentar.module.sass'
 import { PresentarProps } from './type'
 
-export const Company: React.FC<PresentarProps> = ({ companies, error }) => {
+const Presentar: React.FC<PresentarProps> = ({ companies, error }) => {
   return (
     <div className={styles.className}>
       <Link href="/">
@@ -31,3 +31,5 @@ export const Company: React.FC<PresentarProps> = ({ companies, error }) => {
     </div>
   )
 }
+
+export default Presentar
