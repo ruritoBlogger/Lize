@@ -32,7 +32,7 @@ export const runGenerateCompany = createAsyncThunk<{ message: string }>(
   async () =>
     await runGetHttpRequest(
       AngeResponseCodec,
-      `${ANGE_URL}:${ANGE_PORT}/company`,
+      `http://${ANGE_URL}:${ANGE_PORT}/company`,
     )().then((value) =>
       // NOTE: fp-ts/TaskEither -> Promise
       // createAsyncThunk内部でresolve, rejectしないと効力があまりない
@@ -51,7 +51,7 @@ export const runGenerateFinancialStatement = createAsyncThunk<{
   async () =>
     await runGetHttpRequest(
       AngeResponseCodec,
-      `${ANGE_URL}:${ANGE_PORT}/finantial_statements`,
+      `http://${ANGE_URL}:${ANGE_PORT}/finantial_statements`,
     )().then((value) =>
       // NOTE: fp-ts/TaskEither -> Promise
       // createAsyncThunk内部でresolve, rejectしないと効力があまりない
