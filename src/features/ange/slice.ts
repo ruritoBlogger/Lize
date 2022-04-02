@@ -15,7 +15,7 @@ export const runGenerateIndustry = createAsyncThunk<{ message: string }>(
   async () =>
     await runGetHttpRequest(
       AngeResponseCodec,
-      `${ANGE_URL}:${ANGE_PORT}/industry`,
+      `http://${ANGE_URL}:${ANGE_PORT}/industry`,
     )().then((value) =>
       // NOTE: fp-ts/TaskEither -> Promise
       // createAsyncThunk内部でresolve, rejectしないと効力があまりない

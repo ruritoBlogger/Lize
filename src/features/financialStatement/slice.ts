@@ -27,7 +27,7 @@ export const fetchFinancialStatementList = createAsyncThunk<
       // eslint-disable-next-line
       // @ts-ignore
       t.array(FinancialStatementCodec),
-      `${TOKO_URL}:${TOKO_PORT}/company/${companyID}/finantial`,
+      `http://${TOKO_URL}:${TOKO_PORT}/company/${companyID}/finantial`,
     )().then((value) =>
       // NOTE: fp-ts/TaskEither -> Promise
       // createAsyncThunk内部でresolve, rejectしないと効力があまりない

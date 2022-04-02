@@ -20,7 +20,7 @@ export const fetchIndustryList = createAsyncThunk<Industry[]>(
       // eslint-disable-next-line
       // @ts-ignore
       t.array(IndustryCodec),
-      `${TOKO_URL}:${TOKO_PORT}/industry`,
+      `http://${TOKO_URL}:${TOKO_PORT}/industry`,
     )().then((value) =>
       // NOTE: fp-ts/TaskEither -> Promise
       // createAsyncThunk内部でresolve, rejectしないと効力があまりない
