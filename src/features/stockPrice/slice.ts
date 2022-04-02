@@ -20,7 +20,7 @@ export const fetchStockPriceList = createAsyncThunk<StockPrice[], number>(
       // eslint-disable-next-line
       // @ts-ignore
       t.array(StockPriceCodec),
-      `${TOKO_URL}:${TOKO_PORT}/company/${companyID}/stock`,
+      `http://${TOKO_URL}:${TOKO_PORT}/company/${companyID}/stock`,
     )().then((value) =>
       // NOTE: fp-ts/TaskEither -> Promise
       // createAsyncThunk内部でresolve, rejectしないと効力があまりない
