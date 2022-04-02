@@ -4,7 +4,7 @@ import React from 'react'
 import styles from './Presentar.module.sass'
 import { PresentarProps } from './type'
 
-export const Root: React.FC<PresentarProps> = ({
+const Presentar: React.FC<PresentarProps> = ({
   industryIsLoading,
   industryButtonOnClick,
   companyIsLoading,
@@ -29,3 +29,5 @@ export const Root: React.FC<PresentarProps> = ({
     </div>
   )
 }
+
+export default Presentar
