@@ -1,0 +1,10 @@
+version: '3'
+services:
+  lize:
+    build:
+      context: .
+    volumes:
+      - ./:/front
+    command: yarn dev
+    ports:
+      - "3000:3000"
