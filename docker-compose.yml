@@ -6,5 +6,11 @@ services:
     volumes:
       - ./:/front
     command: yarn dev
+    networks:
+      - common_link
     ports:
       - "3000:3000"
+
+networks:
+  common_link:
+    external: true
