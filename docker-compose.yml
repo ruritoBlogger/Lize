@@ -10,6 +10,10 @@ services:
       - common_link
     ports:
       - "3000:3000"
+  toko:
+    image: "ghcr.io/ruritoblogger/toko:latest"
+  ange:
+    image: "ghcr.io/ruritoblogger/ange:latest"
 
 networks:
   common_link:
